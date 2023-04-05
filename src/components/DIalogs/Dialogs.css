@@ -1,0 +1,25 @@
+.dialogs {
+    grid-area: c;
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+  }
+
+  .dialogs__items {
+    margin: 10px;
+    
+  }
+  .dialogs__container {
+    display: flex;
+    margin-top: 30px;
+    margin-left: 30px;
+  }
+
+  .dialogs__textarea {
+  
+    
+  }
+
+.dialogs__button {
+  max-width: 50px;
+
+}

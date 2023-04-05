@@ -1,0 +1,9 @@
+.dialogs__messages {
+    list-style-type: none;
+    padding: 10px;
+      }
+
+      .dialogs__message-avatar {
+        width: 30px;
+        border-radius: 50%;
+      }

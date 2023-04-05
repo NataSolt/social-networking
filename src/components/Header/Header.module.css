@@ -1,0 +1,10 @@
+.logo {
+    width: 70px;
+    margin: 5px 20px;
+  }
+  
+  .header {
+  grid-area: h;
+  background-color: aqua;
+ 
+  }

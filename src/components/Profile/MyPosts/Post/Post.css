@@ -1,0 +1,13 @@
+.post {
+    margin: 20px 10px;
+}
+
+.post__img {
+width: 30px;
+border-radius: 50%;
+}
+
+.post__container {
+    display: flex;
+    
+}

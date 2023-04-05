@@ -1,0 +1,13 @@
+.friends {
+    
+}
+
+.friends__title {
+    text-align: center;
+}
+
+.friends__box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}

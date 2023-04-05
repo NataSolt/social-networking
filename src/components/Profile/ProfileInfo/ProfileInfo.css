@@ -1,0 +1,10 @@
+.profileinfo {
+    grid-area: c;
+  }
+  .profileinfo__baner {
+    width: 100%;
+    height: 150px;
+  }
+  .profileinfo__avatar {
+    width: 90px;
+  }

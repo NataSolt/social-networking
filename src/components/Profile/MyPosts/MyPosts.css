@@ -1,0 +1,7 @@
+.myPost__container {
+    display: flex;
+
+}
+.myPost__textarea {
+    margin: 0 10px 0 0;
+}
