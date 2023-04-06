@@ -4,11 +4,12 @@ import './Profile.css';
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
 function Profile(props) {
-    
+
 
     return <section className='profile'>
     <ProfileInfo />
-    <MyPosts postData={props.postData} addPost={props.addPost}/>
+    <MyPosts postData={props.postData} addPost={props.addPost} newPostText={props.newPostText} 
+    updateNewPostText={props.updateNewPostText} />
     </section>
 }
 

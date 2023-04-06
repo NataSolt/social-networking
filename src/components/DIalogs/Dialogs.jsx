@@ -12,10 +12,12 @@ let dialosElement = props.dialogsData.map(elem=> <DialogsItem name={elem.name} i
 let messagesElement = props.messagesData.map(elem=><Message message={elem.message} id={elem.id} avatar={elem.avatar}/>)
 let newDialogsElement = React.createRef();
     let addMessage =()=> {
-    let text = newDialogsElement.current.value;
-    console.log(text)
+    props.addMessage();
     }
-
+function onMessageChange() {
+    let text = newDialogsElement.current.value;
+    props.updateNewMessageText(text)
+}
 
     return <div className="dialogs">
 <ul className="dialogs__items">
@@ -24,7 +26,7 @@ let newDialogsElement = React.createRef();
 <ul className="dialogs__messages">
  {messagesElement}    
  <div className="dialogs__container">
-    <textarea className="dialogs__textarea" ref={newDialogsElement}/>
+    <textarea className="dialogs__textarea" value={props.newMessageText} ref={newDialogsElement} onChange={onMessageChange}/>
         <button  className="dialogs__button" onClick={addMessage}>add</button>
         </div>               
 </ul>
