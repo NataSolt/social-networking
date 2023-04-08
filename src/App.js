@@ -10,17 +10,17 @@ import Settings from './components/Settings/Settings';
 
 
 function App(props) {
-debugger
+
   return (
   
   <div className='app-wrapper'>
       <Header/>
       <Navbar friendsData={props.state.navbarPage.friendsData}/>
       <Routes>
-     <Route path='/Profile' element={<Profile postData={props.state.profilePage.postData} addPost={props.addPost}
-      newPostText ={props.state.profilePage.newPostText} updateNewPostText={props.updateNewPostText}/>} />
+     <Route path='/Profile' element={<Profile postData={props.state.profilePage.postData} dispatch={props.dispatch}
+      newPostText ={props.state.profilePage.newPostText} />} />
      <Route path='/Dialogs/*' element={<Dialogs dialogsData={props.state.dialogsPage.dialogsData} newMessageText={props.state.dialogsPage.newMessageText}
-      messagesData={props.state.dialogsPage.messagesData} addMessage={props.addMessage} updateNewMessageText={props.updateNewMessageText}/>} />
+      messagesData={props.state.dialogsPage.messagesData} dispatch={props.dispatch} />} />
      <Route path='/News' element={<News/>} />
      <Route path='/Muisic' element={<Muisic />} />
      <Route path='/Settings' element={<Settings />} />

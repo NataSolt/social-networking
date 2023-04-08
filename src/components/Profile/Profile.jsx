@@ -8,8 +8,7 @@ function Profile(props) {
 
     return <section className='profile'>
     <ProfileInfo />
-    <MyPosts postData={props.postData} addPost={props.addPost} newPostText={props.newPostText} 
-    updateNewPostText={props.updateNewPostText} />
+    <MyPosts postData={props.postData} dispatch={props.dispatch} newPostText={props.newPostText} />
     </section>
 }
 
