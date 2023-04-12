@@ -2,7 +2,7 @@ import React from "react";
 //import {postData} from "../../../constants/constants";
 import './MyPosts.css';
 import Posts from "./Post/Post";
-import { addPostActionCreator, updateNewPostTextActionCreator } from "../../../redux/state";
+import { addPostActionCreator, updateNewPostTextActionCreator } from "../../../redux/profile-reducer";
 
 
 function MyPosts(props) {

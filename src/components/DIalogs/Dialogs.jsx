@@ -3,22 +3,27 @@ import React from "react";
 import './Dialogs.css';
 import DialogsItem from "./DialogsItem/DialogsItem";
 import Message from "./Message/Message";
-import { addMessageActionCreator, updateNewMessageTextActionCreator } from "../../redux/state";
+import { addMessageActionCreator, updateNewMessageTextActionCreator } from "../../redux/dialogs-reducer";
 
 
 
 function Dialogs(props){
+    let state = props.store.getState().dialogsPage;
 
-let dialosElement = props.dialogsData.map(elem=> <DialogsItem name={elem.name} id={elem.id} avatar={elem.avatar}/>)
-let messagesElement = props.messagesData.map(elem=><Message message={elem.message} id={elem.id} avatar={elem.avatar}/>)
-let newDialogsElement = React.createRef();
-    let addMessage =()=> {
-    props.dispatch(addMessageActionCreator());
+let dialosElement = state.dialogsData.map(elem=> <DialogsItem name={elem.name} id={elem.id} avatar={elem.avatar}/>)
+let messagesElement = state.messagesData.map(elem=><Message message={elem.message} id={elem.id} avatar={elem.avatar}/>)
+let newMessageBody = state.newMessageText;
+
+// let newDialogsElement = React.createRef();
+    let onSendMessageClick =()=> {
+    props.store.dispatch(addMessageActionCreator());
     }
-function onMessageChange() {
-    let text = newDialogsElement.current.value;
-    let action = updateNewMessageTextActionCreator(text) 
-    props.dispatch(action)
+function onNewMessageChange(e) {
+    let body = e.target.value;
+props.store.dispatch(updateNewMessageTextActionCreator(body))
+    // let text = newDialogsElement.current.value;
+    // let action = updateNewMessageTextActionCreator(text) 
+    // props.dispatch(action)
 }
 
     return <div className="dialogs">
@@ -28,8 +33,8 @@ function onMessageChange() {
 <ul className="dialogs__messages">
  {messagesElement}    
  <div className="dialogs__container">
-    <textarea className="dialogs__textarea" value={props.newMessageText} ref={newDialogsElement} onChange={onMessageChange}/>
-        <button  className="dialogs__button" onClick={addMessage}>add</button>
+    <textarea className="dialogs__textarea" value={newMessageBody} onChange={onNewMessageChange} placeholder="Enter your message"/>
+        <button  className="dialogs__button" onClick={onSendMessageClick}>add</button>
         </div>               
 </ul>
 
