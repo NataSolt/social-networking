@@ -1,8 +1,9 @@
 import profileReducer from "./profile-reducer";
 import dialogsReducer from "./dialogs-reducer";
 import navbarReducer from "./navbar-reducer";
-
+debugger
 let store = {
+   
      _state: {
         navbarPage : {
             friendsData: [
@@ -54,7 +55,6 @@ subscribe(observer){
     this._callSubscriber= observer;
 },
 dispatch(action) {
-
 this._state.profilePage = profileReducer(this._state.profilePage, action);
 this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
 this._state.navbarPage = navbarReducer(this._state.navbarPage, action);
