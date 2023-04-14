@@ -16,7 +16,7 @@ function Navbar(props) {
     <NavLink to='/muisic' className="nav__item">Music</NavLink>
     <NavLink to='/settings' className="nav__item">Settings</NavLink>
     </div>
-   <Friends friendsData={props.friendsData}/>
+   <Friends />
     
           </nav>
 }
