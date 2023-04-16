@@ -13,19 +13,24 @@ let initialState = {
 
 const profileReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_POST:
+    case ADD_POST:{
       let newPost = {
         id: 5,
         message: state.newPostText,
         // avatar: 'https://otkritkis.com/wp-content/uploads/2021/11/Krasivye-3-1-730x583-1.jpg' ,
         like: 0,
       };
-      state.postData.push(newPost);
-      state.newPostText = "";
-      return state;
-    case UPDATE_NEW_POST_TEXT:
-      state.newPostText = action.newText;
-      return state;
+      return {...state,
+        postData: [...state.postData, newPost],
+        newPostText: "",
+      };
+      
+    }
+    case UPDATE_NEW_POST_TEXT:{
+     return {...state,
+        newPostText: action.newText,
+      };
+    }
     default:
       return state;
   }

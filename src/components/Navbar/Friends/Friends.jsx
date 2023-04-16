@@ -1,10 +1,11 @@
 import React from "react";
-//import Friend from "./Friend/Friend";
+// import Friend from "./Friend/Friend";
 import './Friends.css'
 
 function Friends(props){
+//     let state = props.navbarPage;
     
-//  let friendsElem = props.friendsData.map(elem=> {
+//  let friendsElem = state.friendsData.map(elem=> {
 //     return <Friend avatar={elem.avatar} name={elem.name} id={elem.id}/>
 //  })
    

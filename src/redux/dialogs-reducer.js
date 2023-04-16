@@ -24,22 +24,36 @@ let initialState = {
 }
 
 const  dialogsReducer = (state = initialState, action) => {
+    let stateCopy = {...state, 
+        //messagesData: [...state.messagesData]
+    };
+    
     switch(action.type) {
-        case ADD_MESSAGE:
+        case ADD_MESSAGE:{
             let newMessage ={
                 id: 6,
                 message: state.newMessageText,
                 avatar: 'https://otkritkis.com/wp-content/uploads/2021/11/Krasivye-3-1-730x583-1.jpg' ,
                 
             }   
-             state.messagesData.push(newMessage);
-             state.newMessageText = '';
-             return state;
-             case UPDATE_NEW_MESSAGE_TEXT:
-                state.newMessageText = action.newText;
-                return state;
+            return {...state, 
+                newMessageText: '',
+                messagesData: [...state.messagesData, newMessage] //вместо пуш просто добавляем то что хотим запушить вконец спред оператора
+            };
+            
+             //stateCopy.messagesData.push(newMessage);
+             
+            }
+             case UPDATE_NEW_MESSAGE_TEXT: {
+                return {...state, 
+                    newMessageText: action.newText
+                };
+     
+               
+             }
                 default:
                     return state; 
+                
     }
     }
 

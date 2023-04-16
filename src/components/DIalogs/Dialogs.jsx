@@ -10,8 +10,8 @@ import Message from "./Message/Message";
 function Dialogs(props){
     let state = props.dialogsPage;
 
-let dialosElement = state.dialogsData.map(elem=> <DialogsItem name={elem.name} id={elem.id} avatar={elem.avatar}/>)
-let messagesElement = state.messagesData.map(elem=><Message message={elem.message} id={elem.id} avatar={elem.avatar}/>)
+let dialosElement = state.dialogsData.map((elem, index)=> <DialogsItem key={index} name={elem.name} id={elem.id} avatar={elem.avatar}/>)
+let messagesElement = state.messagesData.map((elem, index)=><Message key={index} message={elem.message} id={elem.id} avatar={elem.avatar}/>)
 let newMessageBody = state.newMessageText;
 
 // let newDialogsElement = React.createRef();
