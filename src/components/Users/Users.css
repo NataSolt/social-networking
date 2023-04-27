@@ -3,6 +3,19 @@
     flex-direction: row;
     flex-wrap: nowrap;
     width: 100%;
+    max-width: 1280px;
+}
+.users__pages {
+   display: flex;
+   flex-wrap: nowrap;
+    max-width: 800px;
+    overflow: hidden;
+   }
+
+.users__page {
+ /* font-size: large; */
+ font-weight: bold;
+ max-width: 900px;
 }
 
 .users__left-box {

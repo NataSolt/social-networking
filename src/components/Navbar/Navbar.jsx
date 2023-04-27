@@ -14,6 +14,7 @@ function Navbar(props) {
     <NavLink to='/dialogs' className="nav__item">Messages</NavLink>
     <NavLink to='/news' className="nav__item">News</NavLink>
     <NavLink to='/muisic' className="nav__item">Music</NavLink>
+    <NavLink to='/users' className="nav__item">Users</NavLink>
     <NavLink to='/settings' className="nav__item">Settings</NavLink>
     </div>
    <Friends />
