@@ -8,34 +8,30 @@ import {
   unfollow,
   setUsersTotalCount,
   toggleIsFetching,
+  toggleIsFollowingProgress
 } from "../../redux/users-reducer";
 import Users from "./Users";
 import Preloader from "../commen/preloader/Preloader";
+import { usersAPI } from "../../api/api";
 
 class UsersContainer extends React.Component {
   componentDidMount() {
     this.props.toggleIsFetching(true);
-    axios
-      .get(
-        `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`
-      )
-      .then((res) => {
+   usersAPI.getUsers(this.props.currentPage, this.props.pageSize)
+      .then((data) => {
         this.props.toggleIsFetching(false);
-        this.props.setUsers(res.data.items);
-        this.props.setUsersTotalCount(res.data.totalCount);
+        this.props.setUsers(data.items);
+        this.props.setUsersTotalCount(data.totalCount);
       });
   }
 
   onPageChanged = (pageNumber) => {
     this.props.setCurrentPage(pageNumber);
     this.props.toggleIsFetching(true);
-    axios
-      .get(
-        `https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`
-      )
-      .then((res) => {
+      usersAPI.getUsers(pageNumber, this.props.pageSize)
+      .then((data) => {
         this.props.toggleIsFetching(false);
-        this.props.setUsers(res.data.items);
+        this.props.setUsers(data.items);
       });
   };
 
@@ -52,6 +48,8 @@ class UsersContainer extends React.Component {
           users={this.props.users}
           follow={this.props.follow}
           unfollow={this.props.unfollow}
+          toggleIsFollowingProgress={this.props.toggleIsFollowingProgress}
+          followingInProgress={this.props.followingInProgress}
         />
       </div>
     );
@@ -65,6 +63,7 @@ const mapStateToProps = (state) => {
     totalUsersCount: state.usersPage.totalUsersCount,
     currentPage: state.usersPage.currentPage,
     isFetching: state.usersPage.isFetching,
+    followingInProgress: state.usersPage.followingInProgress
   };
 };
 
@@ -98,4 +97,36 @@ export default connect(mapStateToProps, {
   setCurrentPage,
   setUsersTotalCount,
   toggleIsFetching,
+  toggleIsFollowingProgress
 })(UsersContainer);
+
+
+// axios
+// .delete(
+//   `https://social-network.samuraijs.com/api/1.0/follow/${elem.id}`,
+//   { withCredentials: true,
+//   headers: {
+//     "API-KEY": "a61a46b6-1518-40dc-a765-89312ddd956a"
+//   } }
+// )
+// .then((res) => {
+//     if(res.data.resultCode == 0) {
+//         props.unfollow(elem.id);
+//     }
+// });
+
+// axios
+// .post(
+    
+//   `https://social-network.samuraijs.com/api/1.0/follow/${elem.id}`,
+//   {},
+//   { withCredentials: true,
+//     headers: {
+//     "API-KEY": "a61a46b6-1518-40dc-a765-89312ddd956a"
+//   }
+//   }
+// )
+// .then((res) => {
+//     if(res.data.resultCode == 0) {
+//         props.follow(elem.id);
+//     }
