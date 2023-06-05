@@ -16,25 +16,19 @@ export const usersAPI = {
             return res.data;
           });
       },
-      // deleteFollow(id,unfollow ) {
-      //   return instance.delete( `follow/${id}`)
-      //   .then((res) => {
-      //     if (res.data.resultCode === 0) {
-      //       unfollow(id);
-      //     }
-      //   });
-      // },
-      // putFollow(id,follow){
-      //   return instance.post(
-      //     `follow/${id}`,
-      //     {},
-      //   )
-      //   .then((res) => {
-      //     if (res.data.resultCode === 0) {
-      //       follow(id);
-      //     }
-      //   });
-      // }
-
+      unfollow(userId) {
+        return instance.delete( `follow/${userId}`)
+      },
+      follow(userId){
+        return instance.post( `follow/${userId}`)
+      },
+      getProfile(userId) {
+       return instance.get( `profile/` + userId)
+      }
  }
 
+ export const authAPI = {
+  getMe(){
+   return instance.get(`auth/me`)
+  }
+}

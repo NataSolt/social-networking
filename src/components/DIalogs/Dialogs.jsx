@@ -1,5 +1,5 @@
 import React from "react";
-//import { dialogsData, messagesData } from "../../redux/state";
+import {Navigate} from "react-router-dom"
 import './Dialogs.css';
 import DialogsItem from "./DialogsItem/DialogsItem";
 import Message from "./Message/Message";
@@ -27,6 +27,7 @@ function onNewMessageChange(e) {
     // let action = updateNewMessageTextActionCreator(text) 
     // props.dispatch(action)
 }
+if(!props.isAuth) return <Navigate to={"/login"}/>
 
     return <div className="dialogs">
 <ul className="dialogs__items">

@@ -3,6 +3,7 @@ import baner from './../../../images/baner.jpg';
 import image from "../../../images/1617045949_35-p-dmitrii-nagiev-39.jpg";
 import './ProfileInfo.css';
 import Preloader from "../../commen/preloader/Preloader";
+import ProfileStatus from "../ProfileStatus/ProfileStatus";
 
 function ProfileInfo(props) {
     
@@ -15,6 +16,7 @@ if(!props.profile) {
     <img className='profileinfo__baner' src= {baner} alt ='baner' />
     </div>
     <img  className='profileinfo__avatar' src ={props.profile.photos.small != null ? props.profile.photos.small : image}  alt = 'avatar' />
+    <ProfileStatus status="hello,my friends" />
     <p>{props.profile.fullName}</p>
     <p>{props.profile.aboutMe}</p>
     <p>{props.profile.contacts.facebook} {props.profile.contacts.github}</p>

@@ -5,35 +5,14 @@ import {
   updateNewMessageTextActionCreator,
 } from "../../redux/dialogs-reducer";
 import Dialogs from "./Dialogs";
-//import StoreContext from "../../StoreContext";
-import { connect } from "react-redux";
 
-// function dialogsContainer() {
-//   return (
-//     <StoreContext.Consumer>
-//       {(store) => {
-//         let state = store.getState().dialogsPage;
-//         let onSendMessageClick = () => {
-//           store.dispatch(addMessageActionCreator());
-//         };
-//         function onNewMessageChange(body) {
-//           store.dispatch(updateNewMessageTextActionCreator(body));
-//         }
-//         return (
-//           <Dialogs
-//             updateNewMessageBody={onNewMessageChange}
-//             sendMessage={onSendMessageClick}
-//             dialogsPage={state}
-//           />
-//         );
-//       }}
-//     </StoreContext.Consumer>
-//   );
-// }
+import { connect } from "react-redux";
+import withAuthRedirect from "../../hoc/withAuthRedirect";
+import { compose } from "redux";
 
 let mapStateToProps = (state) => {
  return {
-  dialogsPage: state.dialogsPage
+  dialogsPage: state.dialogsPage,
  }
 }
 let mapDispatchToProps = (dispatch) => {
@@ -46,6 +25,8 @@ let mapDispatchToProps = (dispatch) => {
   }
     }
 }
-const dialogsContainer = connect(mapStateToProps, mapDispatchToProps) (Dialogs)
 
-export default dialogsContainer;
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  withAuthRedirect
+  )(Dialogs);

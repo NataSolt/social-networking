@@ -8,3 +8,9 @@
   .profileinfo__avatar {
     width: 90px;
   }
+
+  .profile-status {
+    display: flex;
+    flex-direction: column;
+    max-width: 200px;
+  }
